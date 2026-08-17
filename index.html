@@ -6,7 +6,6 @@
   <meta name="theme-color" content="#10192d" />
   <title>Puzzle Defense Prototype</title>
   <link rel="stylesheet" href="styles.css" />
-  <link rel="manifest" href="manifest.webmanifest" />
 </head>
 <body>
   <main class="game-shell" aria-label="Puzzle Defense">
@@ -40,10 +39,5 @@
   </main>
   <!-- 일반 스크립트: file:/// 주소로 직접 열어도 실행됩니다. -->
   <script src="app.js"></script>
-  <script>
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js"));
-    }
-  </script>
 </body>
 </html>
