@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#10192d" />
+  <title>Puzzle Defense Prototype</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="manifest" href="manifest.webmanifest" />
+</head>
+<body>
+  <main class="game-shell" aria-label="Puzzle Defense">
+    <header class="hud safe-top">
+      <div class="stat-card resource-card"><span>COIN</span><strong id="resourceValue">100 <i>원</i></strong></div>
+      <div class="wave-badge"><span>WAVE</span><strong id="waveValue">1</strong></div>
+      <div class="stat-card hp-card"><span>PLAYER HP</span><strong id="playerHpValue">100 <i>/ 100</i></strong><div class="meter"><b id="playerHpBar"></b></div></div>
+    </header>
+
+    <section class="battlefield" id="battlefield" aria-label="전투 영역">
+      <div class="horizon"></div>
+      <div class="battle-tip">조각이 자동으로 공격합니다 · 드래그해서 이동/합치기</div>
+      <div class="player" id="player" aria-label="플레이어"><span class="player-gun"></span><span class="player-face">•ᴗ•</span></div>
+      <div class="enemy-layer" id="enemyLayer"></div>
+      <div class="projectile-layer" id="projectileLayer"></div>
+      <div class="battle-feedback" id="battleFeedback"></div>
+    </section>
+
+    <section class="puzzle-section safe-bottom">
+      <div class="section-heading"><div><span class="eyebrow">PUZZLE ARMORY</span><h1>조각을 합쳐 더 강하게</h1></div><span class="merge-help">드래그해서 합치기</span></div>
+      <div class="puzzle-area">
+        <div class="board" id="board" aria-label="5 x 5 퍼즐판"></div>
+        <button class="buy-button" id="buyButton" type="button" aria-label="퍼즐 조각 뽑기">
+          <span class="buy-orb">✦</span><span class="buy-label">PUZZLE<br><b>DRAW</b></span><span class="buy-cost">50원</span>
+        </button>
+      </div>
+      <p class="status-message" id="statusMessage" aria-live="polite">몬스터를 처치해 코인을 획득하세요.</p>
+    </section>
+    <section class="game-over" id="gameOver" hidden><div class="game-over-card"><span>DEFENSE FAILED</span><h2>GAME OVER</h2><p id="finalWave">최종 Wave 1</p><button id="restartButton" type="button">RESTART</button></div></section>
+    <section class="start-screen" id="startScreen"><div class="start-card"><span class="start-mark">● ◆ ★</span><span class="eyebrow">PUZZLE DEFENSE</span><h2>합쳐서 방어하라</h2><p>자원을 모아 조각을 구매하고,<br>같은 조각을 합쳐 적을 막아내세요.</p><button id="startButton" type="button">GAME START</button><small>자동 공격 · 드래그: 이동/합치기</small></div></section>
+  </main>
+  <!-- 일반 스크립트: file:/// 주소로 직접 열어도 실행됩니다. -->
+  <script src="app.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js"));
+    }
+  </script>
+</body>
+</html>
